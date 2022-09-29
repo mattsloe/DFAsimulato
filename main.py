@@ -2,8 +2,8 @@
 
 # Press ⌃R to execute it or replace it with your code.
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-import variables
-import inputs
+from DFA import DFA
+# import inputs
 
 
 def print_hi(name):
@@ -11,25 +11,8 @@ def print_hi(name):
     print('Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
 
 
-# Press the green button in the gutter to run the script.
-def runDFA(automaton, word):
-    currentState = automaton.startState
-
-    for char in word:  # transition using current state and input char
-        currentState = automaton.transitionFcn[(currentState, char)]
-
-    # check if DFA goes into rejected state
-    if currentState is None:
-        print("Reject State")
-    else:  # check whether final state is accepted state
-        if currentState in automaton.acceptStates:
-            print("Accepted")
-        else:
-            print("Rejected")
-
-
 if __name__ == '__main__':
-    dfaTuple = inputs.get_inputs()
+    myDFA = DFA()
     flag = 1  # flag for the menu
     while flag == 1:
         print("Test with string (1) or exit (0)")
@@ -37,7 +20,7 @@ if __name__ == '__main__':
         if userIn == '1':
             print("Input a valid string: ", end="")
             inputString = input()
-            runDFA(dfaTuple, inputString)
+            myDFA.run(inputString)
         if userIn == '0':
             flag = 0
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

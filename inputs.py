@@ -44,7 +44,7 @@ def get_inputs():
 
 
 if __name__ == '__main__':
-    import variables
+    import DFA
     dfaTuple = get_inputs()
     print(f"states: {dfaTuple.states}")
     print(f"alphabet: {dfaTuple.alphabet}")
