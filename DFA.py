@@ -29,8 +29,8 @@ class DFA:
         # Inputting the Transition Function Table
         # Reject states represented as 'None' in dictionary
         print(
-            "Enter the transitions for the following states (enter . for reject "
-            "state)")
+            "Enter the transitions for the following states (enter . for reject"
+            " state)")
         for state in self.states:
             for alpha in self.alphabet:
                 print(f"\t {alpha}")
@@ -46,7 +46,9 @@ class DFA:
         currentState = self.startState
 
         for char in word:  # transition using current state and input char
+            print(f"State: {currentState}, next input: {char}", end="->")
             currentState = self.transitionFcn[(currentState, char)]
+            print(f"new state: {currentState}")
 
         # check if DFA goes into rejected state
         if currentState is None:
@@ -56,6 +58,3 @@ class DFA:
                 print("Accepted")
             else:
                 print("Rejected")
-
-
-
